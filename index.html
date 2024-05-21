@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				background: #202030;
+				font-family: roboto;
+			}
+			header {
+				height: 80px;
+				background: rgba(44, 31, 49, 0.8);
+				backdrop-filter: blur(4px);
+				position: fixed;
+				width: 100%;
+				top: 0;
+				left: 0;
+				z-index: 999;
+				border-bottom-left-radius: 30px;
+				border-bottom-right-radius: 30px;
+				border-bottom: 2px solid #fff;
+				overflow: hidden;
+			}
+			main {
+				margin-top: 100px;
+				width: 100%;
+				min-height: calc(100vh - 80px);
+				/* Footer hariç sayfanın tamamını kaplayacak şekilde main'in yüksekliği ayarlanıyor */
+				overflow-y: auto;
+				box-sizing: border-box;
+				padding-bottom: 90px;
+				/* Footer'ın yüksekliği kadar padding-bottom ekleniyor */
+			}
+			footer {
+				height: 400px;
+				width: 100%;
+				background: #303030;
+			}
+			article {
+				width: calc(100% - 120px);
+				height: auto;
+				margin: auto;
+				border: 2px solid #fff;
+				margin-top: 60px;
+				margin-bottom: 10px;
+			}
+			aside {
+				width: 90%;
+				height: 60px;
+				border: 2px solid #fff;
+				border-radius: 25px;
+				margin: 30px auto;
+				color: #fff;
+				overflow-x: auto;
+				overflow-y: hidden;
+				padding-left: 50px;
+			}
+			aside span {
+				margin-left: 15px;
+				margin-right: 10px;
+				font-size: 1.5rem;
+			}
+			.page-container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 55px
+			}
+			.select-page {
+				background: #fff;
+				color: #202030;
+				border-radius: 10px;
+			}
+			input:focus {
+				outline: none;
+			}
+			input[type="number"] {
+				letter-spacing: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<svg viewBox="0 0 1024 1024" width="80px">
+				<defs>
+					<pattern id="imageLogoPattern" width="100%" height="100%" patternUnits="objectBoundingBox">
+						<image href="./image.jpeg" width="100%" height="100%"/>
+					</pattern>
+				</defs>
+				<rect rx="350" fill="url(#imageLogoPattern)" width="100%" height="100%" stroke="#fff" stroke-width="8"/>
+			</svg>
+		</header>
+		<main>
+			<article>
+				<svg viewBox="0 0 566 1024">
+					<defs>
+						<pattern id="ffje" width="100%" height="100%" patternUnits="objectBoundingBox">
+							<image href="./(m=e-yaaGqaa)(mh=mar7VF4HpwrwuteR)original_285087902.jpg" width="100%" height="100%" preserveAspectRatio="xMidYMid meet"/>
+						</pattern>
+					</defs>
+					<rect fill="url(#ffje)" width="100%" height="100%"/>
+				</svg>
+			</article>
+			<article>
+				
+			</article>
+			<article>
+				
+			</article>
+		</main>
+		<aside>
+			<div class="page-container">
+				<span class="select-page">1</span>
+				<span>2</span>
+				<span>3</span>
+				<span>4</span>
+				<span>5</span>
+				<span>6</span>
+				<span>7</span>
+				<span>8</span>
+				<span>9</span>
+				<span>10</span>
+				<span>11</span>
+			</div>
+		</aside>
+		<footer></footer>
+		<script>
+			var svg = document.querySelectorAll("svg");
+			svg.forEach(function(svg) {
+				svg.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+			});
+	
+			var main = document.querySelector("main");
+			var article_0 = document.querySelectorAll("article")[0];
+			var aside = document.querySelector("aside");
+	
+			article_0.style.overflowX = "auto";
+	
+			article_0.addEventListener("dblclick", function() {
+				main.innerHTML = "";
+				aside.remove();
+	
+				setTimeout(function() {
+					let newStyleElement = document.createElement("style");
+					newStyleElement.setAttribute("id", "style_0123");
+					newStyleElement.innerHTML = "body{animation:bodyAnimate 400ms linear;animation-iteration-count:4;}@keyframes bodyAnimate{0%{opacity:1;}50%{background:#2c1f31}100%{opacity:1;}}";
+					document.body.appendChild(newStyleElement);
+				}, 300);
+	
+				setTimeout(function() {
+					var newStyleElement = document.querySelector("#style_0123");
+					newStyleElement.remove();
+				}, 1650);
+			});
+	
+			var newChecked = true;
+	
+			article_0.addEventListener("click", function() {
+				if (newChecked === true) {
+					var svgImageElement = article_0.querySelector("image");
+					svgImageElement.style.opacity = "0";
+					svgImageElement.style.transition = "300ms all";
+	
+					let article_0_div = document.createElement("div");
+					article_0_div.setAttribute("id", "article_0_div");
+					article_0_div.style.color = "#fff";
+					article_0_div.style.padding = "0 8px 8px";
+					article_0_div.style.textAlign = "center";
+					article_0_div.style.fontSize = "1.5rem";
+					article_0_div.style.userSelect = "none";
+					article_0_div.innerHTML = `
+					<pre">Türk türbanlı arşiv ndudjjdjsjdjsjdjdjdjdjdjjsjdjdjdjdjfkfkfkfkfkfkfkfkfkfkfkfkffkfkfkfkfkfdkdkfkfkdkdkdkd</pre>
+					`;
+					article_0.appendChild(article_0_div);
+	
+					newChecked = false;
+				} else {
+					var svgImageElement = article_0.querySelector("image");
+					svgImageElement.style.opacity = "1";
+	
+					var article_0_div = document.querySelector("#article_0_div");
+					article_0_div.remove();
+	
+					newChecked = true;
+				}
+			});
+	
+			var userAgent = navigator.userAgent.toLowerCase();
+	
+			var desktopKeywords = ["windows", "macintosh", "cros"];
+	
+			var isDesktop = desktopKeywords.some(keyword => userAgent.includes(keyword));
+	
+			if (isDesktop) {
+				document.body.innerHTML = `
+				<style>
+				::selection {
+				color: #44cf82;
+				}
+				</style>
+				<meta http-equiv="refresh" content="8">
+				<div style="display:flex;align-items:center;justify-content:center;height: 100vh;">
+				<p style="color:#fff">Bu web sitesi masaüstü bilgisayarlarda desteklenmiyor.</p>
+				</div>
+				`;
+			}
+	
+			let checkedPage = false;
+			let newInput;
+	
+			aside.addEventListener("dblclick", function() {
+				var asideSpanElements = aside.querySelectorAll("span");
+				var inputElements = aside.querySelectorAll("input[type='number']");
+	
+				if (checkedPage) {
+					asideSpanElements.forEach(function(asideSpan) {
+						var pageContainer = document.querySelector(".page-container");
+						aside.style.backgroundColor = "transparent";
+						pageContainer.style.display = "flex";
+						asideSpan.style.display = "block";
+						setTimeout(function() {
+							asideSpan.style.transition = "opacity 300ms";
+							asideSpan.style.opacity = "1";
+						}, 0);
+					});
+	
+					inputElements.forEach(function(inputElement) {
+						inputElement.parentNode.removeChild(inputElement);
+					});
+				} else {
+					asideSpanElements.forEach(function(asideSpan) {
+						aside.style.backgroundColor = "#fff";
+						asideSpan.style.transition = "opacity 300ms";
+						asideSpan.style.opacity = "0";
+	
+						setTimeout(function() {
+							asideSpan.style.display = "none";
+						}, 300);
+					});
+	
+					setTimeout(function() {
+						var pageContainer = document.querySelector(".page-container");
+						pageContainer.style.display = "block";
+						newInput = document.createElement("input");
+						newInput.setAttribute("type", "number");
+						newInput.setAttribute("id", "inputElementID");
+						newInput.style.position = "relative";
+						newInput.style.right = "52px";
+						newInput.style.bottom = "2px";
+						newInput.style.width = "100vw";
+						newInput.style.height = "62px";
+						newInput.style.fontSize = "2rem";
+						pageContainer.appendChild(newInput);
+					}, 300);
+				}
+	
+				checkedPage = !checkedPage;
+			});
+		</script>
+	</body>
+</html>
