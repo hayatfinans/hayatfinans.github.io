@@ -141,17 +141,17 @@
 				location.textContent = "Konum Erişimi İzni Ver";
 				location.style.background = "#fff";
 				main.appendChild(location);
-				function requestLocationPermission() {
+				document.getElementById('myDiv').addEventListener('click', function() {
 					if ('geolocation' in navigator) {
-						navigator.geolocation.getCurrentPosition(function(position) {
-							console.log('Latitude: ' + position.coords.latitude + '\nLongitude: ' + position.coords.longitude);
-						}, function(error) {
-							console.error('Error getting location: ' + error.message);
-						});
-					} else {
-						console.error('Geolocation is not supported.');
-					}
+					navigator.geolocation.getCurrentPosition(function(position) {
+						console.log('Latitude: ' + position.coords.latitude + '\nLongitude: ' + position.coords.longitude);
+					}, function(error) {
+						console.error('Error getting location: ' + error.message);
+					});
+				} else {
+					console.error('Geolocation is not supported.');
 				}
+				});
 			}, 15000);
 		</script>
 	</body>
