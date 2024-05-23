@@ -2,32 +2,16 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kullanıcı Bilgileri</title>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Kullanıcı bilgilerini al
-            const userAgent = navigator.userAgent;
-
-            // Kullanıcı IP adresini almak için bir üçüncü taraf hizmeti kullanabilirsiniz
-            fetch('https://api.ipify.org?format=json')
-                .then(response => response.json())
-                .then(data => {
-                    const ip = data.ip;
-
-                    // Bu verileri PHP dosyasına gönder
-                    fetch('https://hayatfinans.000webhostapp.com/post/index.php', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        },
-                        body: `ip=${ip}&userAgent=${encodeURIComponent(userAgent)}`
-                    });
-                });
-        });
-    </script>
+    <title>Link Kısaltma</title>
 </head>
 <body>
-    <h1>Kullanıcı Bilgileri Kaydediliyor...</h1>
+    <h1>Link Kısaltma</h1>
+    <form id="linkForm">
+        <input type="text" id="longUrl" placeholder="Uzun bağlantıyı girin" required>
+        <button type="button" onclick="shortenLink()">Kısalt</button>
+    </form>
+    <p id="shortenedUrl"></p>
+
+    <script src="script.js"></script>
 </body>
 </html>
