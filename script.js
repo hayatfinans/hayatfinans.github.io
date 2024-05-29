@@ -1,14 +1,14 @@
-function shortenLink() {
-    var longUrl = document.getElementById('longUrl').value;
-    if (longUrl) {
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://dhosting.yzz.me/shorten.php', true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                document.getElementById('shortenedUrl').innerHTML = 'Kısaltılmış Bağlantı: ' + xhr.responseText;
-            }
-        };
-        xhr.send('url=' + encodeURIComponent(longUrl));
-    }
-}
+var dragDiv = document.getElementById('drag-div');
+
+var offsetX, offsetY;
+
+dragDiv.addEventListener('dragstart', function(event) {
+    offsetX = event.clientX - dragDiv.getBoundingClientRect().left;
+    offsetY = event.clientY - dragDiv.getBoundingClientRect().top;
+});
+
+dragDiv.addEventListener('drag', function(event) {
+    event.preventDefault(); // Fare olaylarının varsayılan davranışını engelle
+    dragDiv.style.left = (event.clientX - offsetX) + 'px';
+    dragDiv.style.top = (event.clientY - offsetY) + 'px';
+});
