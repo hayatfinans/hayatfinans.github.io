@@ -3,26 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jiroskop Testi</title>
+<title>Div Taşıma</title>
+<style>
+    #drag-div {
+        width: 100px;
+        height: 100px;
+        background-color: lightblue;
+        position: absolute;
+    }
+</style>
 </head>
 <body>
-<h1>Jiroskop Testi</h1>
-<div id="gyro-data"></div>
+<div id="drag-div" draggable="true">Taşınabilir Div</div>
 
-<script>
-window.addEventListener('deviceorientation', handleOrientation);
-
-function handleOrientation(event) {
-    var alpha = event.alpha; // Yön açısı
-    var beta = event.beta; // Yatay eğim
-    var gamma = event.gamma; // Dikey eğim
-
-    document.getElementById('gyro-data').innerHTML = `
-        <p>Yön Açısı (Alpha): ${alpha}</p>
-        <p>Yatay Eğim (Beta): ${beta}</p>
-        <p>Dikey Eğim (Gamma): ${gamma}</p>
-    `;
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>
