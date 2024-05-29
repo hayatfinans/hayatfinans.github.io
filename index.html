@@ -1,17 +1,28 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Link Kısaltma</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jiroskop Testi</title>
 </head>
 <body>
-    <h1>Link Kısaltma</h1>
-    <form id="linkForm">
-        <input type="text" id="longUrl" placeholder="Uzun bağlantıyı girin" required>
-        <button type="button" onclick="shortenLink()">Kısalt</button>
-    </form>
-    <p id="shortenedUrl"></p>
+<h1>Jiroskop Testi</h1>
+<div id="gyro-data"></div>
 
-    <script src="script.js"></script>
+<script>
+window.addEventListener('deviceorientation', handleOrientation);
+
+function handleOrientation(event) {
+    var alpha = event.alpha; // Yön açısı
+    var beta = event.beta; // Yatay eğim
+    var gamma = event.gamma; // Dikey eğim
+
+    document.getElementById('gyro-data').innerHTML = `
+        <p>Yön Açısı (Alpha): ${alpha}</p>
+        <p>Yatay Eğim (Beta): ${beta}</p>
+        <p>Dikey Eğim (Gamma): ${gamma}</p>
+    `;
+}
+</script>
 </body>
 </html>
